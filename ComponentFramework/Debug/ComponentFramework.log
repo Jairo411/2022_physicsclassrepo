@@ -1,0 +1,8 @@
+﻿  Scene2.cpp
+C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(44,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(44,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Scene2.cpp(69,32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  ComponentFramework.vcxproj -> C:\Users\jalbm\Desktop\ComponentFramework22.0.4\Debug\ComponentFramework.exe
