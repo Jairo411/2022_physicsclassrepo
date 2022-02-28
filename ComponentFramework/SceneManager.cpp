@@ -9,7 +9,7 @@
 
 SceneManager::SceneManager(): 
 	currentScene(nullptr), window(nullptr), timer(nullptr),
-	fps(60), isRunning(false), fullScreen(false),camera(Camera()) , isOpenGL(false){
+	fps(60), isRunning(false), fullScreen(false),isOpenGL(false){
 	Debug::Info("Starting the SceneManager", __FILE__, __LINE__);
 }
 
@@ -32,9 +32,9 @@ SceneManager::~SceneManager() {
 	Debug::Info("Deleting the SceneManager", __FILE__, __LINE__);
 }
 
-bool SceneManager::Initialize(std::string name_, int width_, int height_) {
+bool SceneManager::Initialize(std::string name_, int width_, int height_)
+{
 
-	camera = Camera();
 	window = new Window();
 	bool tempFlag = true;
 
@@ -51,11 +51,7 @@ bool SceneManager::Initialize(std::string name_, int width_, int height_) {
 		Debug::FatalError("Failed to initialize Window object", __FILE__, __LINE__);
 		return false;
 	}
-	camera.OnCreate();
-	camera.SetOrigin(width_/2, height_/2);
-	Camera::porigin.set(width_/2,height_/2);
-	
-
+	window->SetCamera(new Camera());
 	timer = new Timer();
 	if (timer == nullptr) {
 		Debug::FatalError("Failed to initialize Timer object", __FILE__, __LINE__);
@@ -142,13 +138,17 @@ void SceneManager::BuildNewScene(SCENE_NUMBER scene) {
 		break;
 
 	case SCENE_NUMBER::SCENE2:
+		world = new World();
+		world->OnCreate(1280, 720);
 		currentScene = new Scene2();
-		currentScene->SetCamera(camera);
+		currentScene->SetCamera(window->GetCamera());
+		currentScene->SetWorld(world);
 		status = currentScene->OnCreate();
 		break;
 	default:
 		Debug::Error("Incorrect scene number assigned in the manager", __FILE__, __LINE__);
 		currentScene = nullptr;
+		world = nullptr;
 		break;
 	}	
 }

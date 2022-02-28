@@ -87,6 +87,18 @@ void Window::getInstalledOpenGLInfo(int *major, int *minor) {
 	return;
 }
 
+void Window::SetCamera(Camera* camera_)
+{
+	camera = camera_;
+	camera->SetOrigin(width, height);
+	camera->OnCreate();
+}
+
+Camera* Window::GetCamera()
+{
+	return camera;
+}
+
 void Window::setAttributes(int major_, int minor_) {
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, major_);

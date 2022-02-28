@@ -2,6 +2,11 @@
 #define CAMERA_H
 #include "Matrix.h"
 #include "Vector.h"
+class Component;
+/// <summary>
+/// Camera origin, will always been in the middle of the screen 
+/// The Camera should only have reference to the middle of the screen and nothing else 
+/// </summary>
 class Camera
 {
 public:
@@ -10,21 +15,17 @@ public:
 	bool OnCreate();
 	void OnDestroy();
 	void SetOrigin(int width_, int height_);
-	/// Set a Position to follow
-	void SetFollowPosition(MATH::Vec3 FollowPosition_);
 	void Update(float deltaTime_);
-	/// Using the worldPosition Matrix which is the center of the screen
-	/// I create the "Actual" world coordinates in realtion to where the matrix is compared to the origin
-	void UpdateScreenPosition();
-
-	static MATH::Vec2 getWorldPosition(MATH::Vec2 position);
-	static MATH::Vec2 porigin;
-	static MATH::Matrix3 worldPosition;
+	/// Move the origin of the camera, should only be set,
+	/// if the screen changes sizes 
+	void MoveOrigin(MATH::Vec3 origin_);
+	MATH::Vec2 getPosition();
 private:
-	MATH::Vec3 origin;
-	MATH::Vec3 followPosition; 
-	MATH::Vec2 ConvertedScreenCoords;
-	
+	int drawWidth;
+	int drawHeight;
+	MATH::Vec3 cameraOrigin;
+	///Camera Position matrix is going to the virtual position of the camera
+	MATH::Matrix4 cameraPositionM;
 };
 #endif // !CAMERA_H
 

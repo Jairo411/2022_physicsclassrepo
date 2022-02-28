@@ -22,6 +22,7 @@ bool Scene2::OnCreate()
 {
     spaceShip->OnCreate();
     
+    world->AddGameObjects(dynamic_cast<Actor*>(spaceShip));
 
     MATH::Vec3 spawn = MATH::Vec3();
     spawn.set(640.0f, 360.0f, 0.0f);
@@ -99,12 +100,16 @@ void Scene2::Update(const float deltaTime)
 
 
             MATH::Vec2 position = MATH::Vec2();
-            MATH::Vec2 converted = MATH::Vec2();
+            MATH::Vec3 position1 = MATH::Vec3();
+
+            MATH::Vec3 converted = MATH::Vec3();
+            MATH::Vec3 converted1 = MATH::Vec3();
+            
             position.set(Bodyref->GetPosition().x, Bodyref->GetPosition().y);
+            position1.set(Bodyref->GetPosition().x, Bodyref->GetPosition().y,0.0f);
 
 
-
-            converted = camera.getWorldPosition(position);
+            converted1 = world->getPosition(position1);
 
             excelFile << TotalTime << "\t" << torque << "\t" << Bodyref->GetAngularAcceleration() << "\t" << Bodyref->GetAngularVelocity() << "\t" <<
 
@@ -112,7 +117,7 @@ void Scene2::Update(const float deltaTime)
 
                 Bodyref->GetAcceleration().y << "\t" << Bodyref->GetVelocity().x << "\t" << Bodyref->GetVelocity().y << "\t" <<
 
-                converted.x << "\t" << converted.y << "\t" << std::endl;
+                converted1.x << "\t" << converted1.y << "\t" << std::endl;
 
 
             //DEBUG
@@ -123,21 +128,14 @@ void Scene2::Update(const float deltaTime)
 
                 "\n" << "accel.y:" << Bodyref->GetAcceleration().y << "\n" << "velocityx:" << Bodyref->GetVelocity().x << "\n" << "velocityy:" << Bodyref->GetVelocity().y << "\n"
 
-                << "Posx:" << converted.x << "\n" << "Posy:" << converted.y << std::endl;
+                << "Posx:" << converted1.x << "\n" << "Posy:" << converted1.y << std::endl;
             //DEBUG
-
-
-
-
 
             secondFlag = 0.0f;
         }
-
-        camera.SetFollowPosition(spaceShip->GetComponent<Body>()->GetPosition());
-        camera.Update(deltaTime);
-        spaceShip->Update(deltaTime);
-
-
+        
+        camera->Update(deltaTime);
+        world->Update(deltaTime);
         secondFlag += deltaTime;
         timeaccumulator += deltaTime;
     }
@@ -146,7 +144,7 @@ void Scene2::Update(const float deltaTime)
 
 void Scene2::Render() 
 {
-    spaceShip->Render();
+    world->Render();
 }
 
 void Scene2::HandleEvents(const SDL_Event& sdlEvent)

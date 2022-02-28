@@ -13,8 +13,6 @@ public:
 	void Run();
 	bool Initialize(std::string name_, int width_, int height_);
 	void HandleEvents();
-	
-	
 private:
 	enum class SCENE_NUMBER {
 		SCENE0 = 0,
@@ -28,7 +26,7 @@ private:
 	class Scene* currentScene;
 	class Timer* timer;
 	class Window* window;
-	Camera camera;
+	class World* world;
 	unsigned int fps;
 	bool isRunning;
 	bool fullScreen;

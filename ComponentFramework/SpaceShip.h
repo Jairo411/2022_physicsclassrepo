@@ -8,7 +8,12 @@
 
 /*
  * The SpaceShip class, is my specified gameObject
+ * SDLTexture, Body, Physics are coded into the SpaceShip class 
+ * because I wanted to test for it, other than that you can add these objects 
+ * in a composition type manner.
  */
+/* GameObject classes should really only have the functionality of changing movement and seeing what they have. 
+*/
 class Texture;
 class SDLTexture;
 class Body;
@@ -21,10 +26,12 @@ public:
 	virtual bool OnCreate();
 	virtual void OnDestroy();
 	virtual void Update(const float deltaTime_);
-	virtual void Render() ;
+	virtual void Render();
+	/// This will move the current gameObject from whatever position it is currently in, plus the position vector you give it 
+	void Translate(MATH::Vec3 position_);
 private:
 	SDL_Rect dst;
 	SDL_Rect source;
-	MATH::Matrix3 WorldPositon;
+	MATH::Matrix4 Position;
 };
 #endif // !SPACESHIP_H

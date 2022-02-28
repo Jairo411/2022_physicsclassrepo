@@ -3,7 +3,7 @@
 #include "Actor.h"
 #include "Texture.h"
 
-SpaceShip::SpaceShip(Component* parent_): Actor(nullptr), dst(SDL_Rect()), source(SDL_Rect())  , WorldPositon(MATH::Matrix3())
+SpaceShip::SpaceShip(Component* parent_): Actor(nullptr), dst(SDL_Rect()), source(SDL_Rect()), Position(MATH::Matrix4())
 {   
 }
 
@@ -16,15 +16,17 @@ bool SpaceShip::OnCreate() // place where I can hard code my spaceShip class
     //setting up SDL images box containers
     source.x = 0;
     source.y = 0;
-    source.w = 557;
-    source.h = 529;
+    source.w =  577;
+    source.h =  529;
     dst.x = 0;
     dst.y = 0;
     dst.w = 70;
     dst.h = 70;
-    WorldPositon = MATH::Matrix3();
-    WorldPositon[6] = 640;
-    WorldPositon[7] = 360;
+    int centreXpivot = dst.w / 2;
+    int centreYpivot = dst.h / 2;
+    Position = MATH::Matrix4();
+    Position[6] = 640; // this is  screen coordinates 
+    Position[7] = 360; // this is screen coordinates 
     //add components to my spaceShip object
 
     SDLTexture* sprite = nullptr;
@@ -45,8 +47,7 @@ bool SpaceShip::OnCreate() // place where I can hard code my spaceShip class
     this->GetComponent<Body>()->SetRotationalInertia(2.67f * powf(10,10));
     this->GetComponent<Physics>()->OnCreate();
 
-    
-
+   
       return true;
 
 }
@@ -65,4 +66,9 @@ void SpaceShip::Update(const float deltaTime_)
 void SpaceShip::Render() 
 {
   this->GetComponent<SDLTexture>()->Render();
+}
+
+void SpaceShip::Translate(MATH::Vec3 position_)
+{
+   
 }

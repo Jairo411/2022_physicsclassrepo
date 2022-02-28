@@ -7,6 +7,7 @@
 #include "Debug.h"
 #include "Vector.h"
 #include "Matrix.h"
+#include "Camera.h"
 class Window {
 private:
 	int width, height;
@@ -27,9 +28,12 @@ public:
 	int getHeight() const { return height; }
 	SDL_Window* getWindow() const { return window; }
 	static SDL_Renderer* getRenderer() { return renderer; }
+	void SetCamera(Camera* camera_);
+	Camera* GetCamera();
 private: /// internal tools OpenGl versions. 
 	void setAttributes(int major_, int minor_);
 	void getInstalledOpenGLInfo(int *major, int *minor);
+	Camera* camera;
 
 };
 #endif /// !WINDOW_H

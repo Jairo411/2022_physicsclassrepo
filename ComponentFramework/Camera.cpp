@@ -1,13 +1,9 @@
 #include "Camera.h"
-MATH::Matrix3 Camera::worldPosition = MATH::Matrix3();
-MATH::Vec2 Camera::porigin = MATH::Vec2();
 
 Camera::Camera()
 {
-	origin = MATH::Vec3();
-	worldPosition = MATH::Matrix3();
-	ConvertedScreenCoords = MATH::Vec2();
-	followPosition = MATH::Vec3();
+	cameraOrigin = MATH::Vec3();
+	cameraPositionM = MATH::Matrix4();
 }
 
 Camera::~Camera()
@@ -16,6 +12,8 @@ Camera::~Camera()
 
 bool Camera::OnCreate()
 {
+	cameraPositionM[12] = cameraOrigin.x;
+	cameraPositionM[13] = cameraOrigin.y;
 	return true;
 }
 
@@ -25,43 +23,27 @@ void Camera::OnDestroy()
 
 void Camera::SetOrigin(int width_, int height_)
 {
-	origin.set(width_, height_, 1);
-	worldPosition[6] = origin.x;
-	worldPosition[7] = origin.y;	
-}
-
-void Camera::SetFollowPosition(MATH::Vec3 FollowPosition_)
-{
-	followPosition = FollowPosition_;
+	drawWidth = width_;
+	drawHeight = height_;
+	int originx, originy;
+	originx = drawWidth / 2;
+	originy = drawHeight / 2;
+	cameraOrigin.set(originx,originy, 1);
 }
 
 void Camera::Update(float deltaTime_)
 {
-	UpdateScreenPosition();
-//	std::cout << "CSC X:" << ConvertedScreenCoords.x << std::endl;
-//	std::cout << "CSC Y:" << ConvertedScreenCoords.y << std::endl;
-
 }
 
-void Camera::UpdateScreenPosition()
+void Camera::MoveOrigin(MATH::Vec3 origin_)
 {
-	worldPosition[6] = followPosition.x;
-	worldPosition[7] = followPosition.y;
-	if (worldPosition[6] >= origin.x || worldPosition[6] <= origin.x)
-	{
-		ConvertedScreenCoords.x = worldPosition[6] - origin.x;
-	}
-	if (worldPosition[7] >= origin.y || worldPosition[7] <= origin.y)
-	{
-		ConvertedScreenCoords.y = origin.y - worldPosition[7];
-		
-	}
+	cameraOrigin = origin_;
 }
 
-MATH::Vec2 Camera::getWorldPosition(MATH::Vec2 position)
+MATH::Vec2 Camera::getPosition()
 {
 	MATH::Vec2 converted = MATH::Vec2();
-	converted.x = position.x - porigin.x;
-	converted.y = position.y - position.y;
+	converted.x = cameraPositionM[12] - cameraOrigin.x;
+	converted.y = cameraOrigin.y - cameraPositionM[13];
 	return converted;
 }

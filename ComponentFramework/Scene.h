@@ -2,10 +2,11 @@
 #define SCENE_H
 #include "Component.h"
 #include "Camera.h"
+#include "World.h"
 union SDL_Event;
 class Scene : public Component {
 public:	
-	Scene(): Component(nullptr) , camera(Camera()) {} 
+	Scene(): Component(nullptr) , camera(nullptr), world(nullptr) {} 
 	virtual ~Scene() {}
 	/// These are not nessesary since they were already defined in Component.h
 	/***
@@ -15,11 +16,16 @@ public:
 	virtual void Render() const  = 0 ;
 	***/
 	virtual void HandleEvents(const SDL_Event& sdlEvent) = 0;
-	void SetCamera(Camera camera_)
+	void SetCamera(Camera* camera_)
 	{
 		camera = camera_;
-	}
+	};
+	void SetWorld(World* world_)
+	{
+		world = world_;
+	};
 protected:
-	 Camera camera;
+	 Camera* camera;
+	 World* world;
 };
 #endif
