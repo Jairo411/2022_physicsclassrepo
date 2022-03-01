@@ -3,7 +3,7 @@
 #include "Actor.h"
 #include "Texture.h"
 
-SpaceShip::SpaceShip(Component* parent_): Actor(nullptr), dst(SDL_Rect()), source(SDL_Rect()), Position(MATH::Matrix4())
+SpaceShip::SpaceShip(Component* parent_): Actor(nullptr), dst(SDL_Rect()), source(SDL_Rect()), position(MATH::Matrix4())
 {   
 }
 
@@ -24,9 +24,9 @@ bool SpaceShip::OnCreate() // place where I can hard code my spaceShip class
     dst.h = 70;
     int centreXpivot = dst.w / 2;
     int centreYpivot = dst.h / 2;
-    Position = MATH::Matrix4();
-    Position[6] = 640; // this is  screen coordinates 
-    Position[7] = 360; // this is screen coordinates 
+    position = MATH::Matrix4();
+    position[12] = 640; // this is  screen coordinates 
+    position[13] = 360; // this is screen coordinates 
     //add components to my spaceShip object
 
     SDLTexture* sprite = nullptr;
@@ -58,8 +58,15 @@ void SpaceShip::OnDestroy()
 
 void SpaceShip::Update(const float deltaTime_)
 {
-    dst.x = this->GetComponent<Body>()->GetPosition().x;
-    dst.y = this->GetComponent<Body>()->GetPosition().y;
+    //take from this for data
+    position[12] = this->GetComponent<Body>()->GetPosition().x;
+    position[13] = this->GetComponent<Body>()->GetPosition().y;
+
+    MATH::Vec2 drawCoords = MATH::Vec2();
+    drawCoords.x = position[12] + leftover.x;
+    drawCoords.y = position[13] + leftover.y;
+    dst.x = drawCoords.x;
+    dst.y = drawCoords.y;
     this->GetComponent<SDLTexture>()->SetDisplay(dst);
 }
 
@@ -67,8 +74,14 @@ void SpaceShip::Render()
 {
   this->GetComponent<SDLTexture>()->Render();
 }
-
-void SpaceShip::Translate(MATH::Vec3 position_)
+void SpaceShip::setLeftOver(MATH::Vec3 leftoverAmount_)
 {
-   
+   leftover = leftoverAmount_;
+}
+MATH::Vec3 SpaceShip::getPosition()
+{
+    MATH::Vec3 pos = MATH::Vec3();
+    pos.x = position[12];
+    pos.y = position[13];
+    return pos;
 }

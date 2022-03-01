@@ -32,6 +32,8 @@ bool Scene2::OnCreate()
     force.set(5.0f * powf(10.0f, 7.0f), 0.0f, 0.0f);
     torque = 0.0f;
 
+    
+
     excelFile.open(fileName, std::ios::app);
     excelFile << "Time: " << "\t" << "Torque" << "\t" << "AngAccel" << "\t" << "AngVel" << "\t"  << "Angle" 
               << "\t" << "Force.x" << "\t" << "Force.y" << "\t" << "Accel.x" << "\t" << "Accel.y"
@@ -49,7 +51,6 @@ void Scene2::Update(const float deltaTime)
     if (ended == false)
     {
 
-
         float SecondDelta = floor(secondFlag);
         float TotalTime = floor(timeaccumulator);
 
@@ -62,7 +63,6 @@ void Scene2::Update(const float deltaTime)
                 started = true;
             }
             float changeInTime = TotalTime - TotalTime + SecondDelta;
-
 
             if (TotalTime == 5.0f && leftEngineOff == false) //Left engine fails
             {
@@ -134,7 +134,7 @@ void Scene2::Update(const float deltaTime)
             secondFlag = 0.0f;
         }
         
-        camera->Update(deltaTime);
+        world->UpdateWorld(camera);
         world->Update(deltaTime);
         secondFlag += deltaTime;
         timeaccumulator += deltaTime;

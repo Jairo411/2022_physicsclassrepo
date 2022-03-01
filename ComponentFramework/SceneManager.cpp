@@ -139,7 +139,7 @@ void SceneManager::BuildNewScene(SCENE_NUMBER scene) {
 
 	case SCENE_NUMBER::SCENE2:
 		world = new World();
-		world->OnCreate(1280, 720);
+		world->OnCreate(window->GetCamera());
 		currentScene = new Scene2();
 		currentScene->SetCamera(window->GetCamera());
 		currentScene->SetWorld(world);

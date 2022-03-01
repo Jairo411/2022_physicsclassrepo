@@ -4,8 +4,11 @@
 #include "Component.h"
 #include "Camera.h"
 #include "Actor.h"
+#include "Body.h"
+#include "SpaceShip.h"
 #include <vector>
 /*Window is programmed to create its own default camera, don't script anything else in terms of intializing the camera*/
+/* so note with the world class certain features should be static, the gameobjects are tied to the world.*/
 class World
 {
 public:
@@ -16,16 +19,20 @@ public:
 
 	World();
 	~World();
-	///Input half of the Screen size in order to set the origin in the middle of the screen 
-	void OnCreate(const int startPosx_, const int startPosy_);
+	///Pass the camera to the world since the camera coordinate system and the world coordinate system 
+	///are the similar 
+	void OnCreate(Camera* camera_);
 	void OnDestroy();
 	void Update(float deltaTime_);
 	void Render();
 	void AddGameObjects(Actor* OBJ_);
-	void UpdateCamera(Camera* camera_,float deltaTime_);
+	//Get Objects positions realtive to the camera
+	void UpdateWorld(Camera* camera_);
 	MATH::Vec3 getPosition(MATH::Vec3 position_);
+	[[deprecated("just returns the screencoordinates of the world class origin, don't use it")]]
+	MATH::Vec3 getOrigin();	
 private:
-	MATH::Matrix4 WorldOrigin; // world starts at the centre of the screen 
-	std::vector<Actor*> Objects;
+	MATH::Vec3 WorldOrigin; // World origin data is screen coordinates
+	std::vector<Actor*> objects;
 };
 #endif

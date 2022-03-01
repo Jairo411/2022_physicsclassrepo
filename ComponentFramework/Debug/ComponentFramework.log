@@ -1,63 +1,7 @@
-﻿  Camera.cpp
+﻿  World.cpp
 C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(44,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(44,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  Main.cpp
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(44,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(44,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  Scene0.cpp
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(44,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(44,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  Scene1.cpp
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(44,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(44,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  Scene2.cpp
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(44,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(44,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Scene2.cpp(70,32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  SceneManager.cpp
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(44,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(44,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  Texture.cpp
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(44,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(44,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Texture.cpp(40,16): warning C4150: deletion of pointer to incomplete type 'SDL_Texture'; no destructor called
-C:\GameDev\SDL2-2.0.12\include\SDL_render.h(137): message : see declaration of 'SDL_Texture'
-  Window.cpp
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(44,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(44,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  World.cpp
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(44,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(44,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Vector.h(62,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\World.cpp(15,30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\World.cpp(16,30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\World.cpp(55,20): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-C:\Users\jalbm\Desktop\ComponentFramework22.0.4\ComponentFramework\Window.cpp(60): warning C4715: 'Window::OnCreate': not all control paths return a value
   ComponentFramework.vcxproj -> C:\Users\jalbm\Desktop\ComponentFramework22.0.4\Debug\ComponentFramework.exe

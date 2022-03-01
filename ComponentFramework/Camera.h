@@ -1,7 +1,9 @@
 #ifndef CAMERA_H
 #define CAMERA_H
+#include <vector>
 #include "Matrix.h"
 #include "Vector.h"
+#include "Actor.h"
 class Component;
 /// <summary>
 /// Camera origin, will always been in the middle of the screen 
@@ -19,10 +21,16 @@ public:
 	/// Move the origin of the camera, should only be set,
 	/// if the screen changes sizes 
 	void MoveOrigin(MATH::Vec3 origin_);
-	MATH::Vec2 getPosition();
+	void Translate(MATH::Vec3 translate_);
+	MATH::Vec3 GetPosition();
+	MATH::Vec2 GetCameraDraw();
+	///Return the origin of the camera
+	MATH::Vec3 GetOrigin();
+	void AddGameObjects(Actor obj_);
 private:
 	int drawWidth;
 	int drawHeight;
+	///Camera Origin is the position in screen coordinates of where the centre of the centre is 
 	MATH::Vec3 cameraOrigin;
 	///Camera Position matrix is going to the virtual position of the camera
 	MATH::Matrix4 cameraPositionM;
