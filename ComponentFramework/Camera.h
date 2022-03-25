@@ -13,6 +13,7 @@ class Camera
 {
 public:
 	Camera();
+	Camera(float left, float right, float bottom, float top);
 	~Camera();
 	bool OnCreate();
 	void OnDestroy();
@@ -26,14 +27,15 @@ public:
 	MATH::Vec2 GetCameraDraw();
 	///Return the origin of the camera
 	MATH::Vec3 GetOrigin();
-	void AddGameObjects(Actor obj_);
 private:
 	int drawWidth;
 	int drawHeight;
 	///Camera Origin is the position in screen coordinates of where the centre of the centre is 
 	MATH::Vec3 cameraOrigin;
 	///Camera Position matrix is going to the virtual position of the camera
-	MATH::Matrix4 cameraPositionM;
+	MATH::Matrix4 ViewM;
+	MATH::Matrix4 projection;
+	MATH::Matrix4 view;
 };
 #endif // !CAMERA_H
 

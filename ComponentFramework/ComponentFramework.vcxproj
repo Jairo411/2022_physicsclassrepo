@@ -125,13 +125,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Body.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Physics.cpp" />
+    <ClCompile Include="Plane.cpp" />
     <ClCompile Include="Scene1.cpp" />
     <ClCompile Include="Scene2.cpp" />
+    <ClCompile Include="Scene3.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MMath.cpp" />
@@ -141,24 +144,27 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="VMath.cpp" />
+    <ClCompile Include="Wall.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
     <ClInclude Include="AxisAngle.h" />
+    <ClInclude Include="Ball.h" />
     <ClInclude Include="Body.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Physics.h" />
+    <ClInclude Include="Plane.h" />
     <ClInclude Include="Scene1.h" />
     <ClInclude Include="Scene2.h" />
+    <ClInclude Include="Scene3.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="MMath.h" />
-    <ClInclude Include="Plane.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Scene0.h" />
     <ClInclude Include="Shader.h" />
@@ -169,6 +175,7 @@
     <ClInclude Include="tiny_obj_loader.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="VMath.h" />
+    <ClInclude Include="Wall.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>

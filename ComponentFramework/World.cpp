@@ -49,20 +49,20 @@ void World::UpdateWorld(Camera* camera_)
 	MATH::Vec3 cameraPosition = camera_->GetPosition();
 	std::vector<MATH::Vec3> ObjectPositions = std::vector<MATH::Vec3>();
 	
-	SpaceShip* obj = dynamic_cast<SpaceShip*>(objects[0]);
-	MATH::Vec3 objPosition = getPosition(obj->getPosition());
+	for (int i = 0; i < objects.size(); i++)
+	{
+		distanceFromCamera = objects[i]->GetComponent<Body>()->GetPosition() - cameraPosition;
+		ObjectPositions.push_back(distanceFromCamera);
+	}
 
 	//This part is suppose to loop over it doesn't but im still coding like it does
-	distanceFromCamera = objPosition - cameraPosition;
-	ObjectPositions.push_back(distanceFromCamera);
-	if (distanceFromCamera.x >400)
-	{
-		camera_->Translate(MATH::Vec3(1920, 0.0f, 0.0f));
-	}
-	std::cout << "distance from camera" << distanceFromCamera.x << "," << distanceFromCamera.y << std::endl;
-	std::cout << "object Position : " << obj->getPosition().x << "," << obj->getPosition().y << std::endl;
-	std::cout << "camera Position :" << camera_->GetPosition().x << "," << camera_->GetPosition().y << std::endl;
-	obj->setLeftOver(distanceFromCamera);
+//	distanceFromCamera = objPosition - cameraPosition;
+//	ObjectPositions.push_back(distanceFromCamera);
+	//std::cout << "distance from camera" << distanceFromCamera.x << "," << distanceFromCamera.y << std::endl;
+//	std::cout << "object Position : " << obj->getPosition().x << "," << obj->getPosition().y << std::endl;
+//	std::cout << "camera Position :" << camera_->GetPosition().x << "," << camera_->GetPosition().y << std::endl;
+	//obj->setLeftOver(distanceFromCamera);
+	
 	
 }
 

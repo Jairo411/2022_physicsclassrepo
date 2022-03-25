@@ -3,7 +3,7 @@
 Camera::Camera()
 {
 	cameraOrigin = MATH::Vec3();
-	cameraPositionM = MATH::Matrix4();
+	ViewM = MATH::Matrix4();
 }
 
 Camera::~Camera()
@@ -12,9 +12,9 @@ Camera::~Camera()
 
 bool Camera::OnCreate()
 {
-	cameraPositionM[12] = cameraOrigin.x;
-	cameraPositionM[13] = cameraOrigin.y;
-	cameraPositionM[14] = 0.0f;
+	ViewM[12] = cameraOrigin.x;
+	ViewM[13] = cameraOrigin.y;
+	ViewM[14] = 0.0f;
 	return true;
 }
 
@@ -43,15 +43,15 @@ void Camera::MoveOrigin(MATH::Vec3 origin_)
 
 void Camera::Translate(MATH::Vec3 translate_)
 {
-	cameraPositionM[12] += translate_.x;
-	cameraPositionM[13] += translate_.y;
+	ViewM[12] += translate_.x;
+	ViewM[13] += translate_.y;
 }
 
 MATH::Vec3 Camera::GetPosition()
 {
 	MATH::Vec3 converted = MATH::Vec3();
-	converted.x = cameraPositionM[12] - cameraOrigin.x;
-	converted.y = cameraOrigin.y - cameraPositionM[13];
+	converted.x = ViewM[12] - cameraOrigin.x;
+	converted.y = cameraOrigin.y - ViewM[13];
 	return converted;
 }
 

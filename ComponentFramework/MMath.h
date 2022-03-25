@@ -1,7 +1,6 @@
 #ifndef MMATH_H
 #define MMATH_H
 #include "Matrix.h"
-#include "Plane.h"
 #include "AxisAngle.h"
 
 namespace  MATH {

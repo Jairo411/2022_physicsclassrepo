@@ -46,6 +46,11 @@ void Body::SetRotationalInertia(float rotationalInertia_)
 	rotationalInertia = rotationalInertia_;
 }
 
+void Body::SetRadius(float radius_)
+{
+	radius = radius_;
+}
+
 void Body::SetPosition(MATH::Vec3 position_)
 {
 	position = position_;
@@ -81,9 +86,19 @@ void Body::SetAngularAcceleration(float angularAcceleration_)
 	angularAcc = angularAcceleration_;
 }
 
+void Body::SetTorque(float torque_)
+{
+	torque = torque_;
+}
+
 void Body::SetRotationMatrix(MATH::Matrix3 rotation_)
 {
 	rotationMatrix = rotation_;
+}
+
+float Body::GetTorque()
+{
+	return torque;
 }
 
 float Body::GetMass()
@@ -94,6 +109,11 @@ float Body::GetMass()
 float Body::GetRotationalInertia()
 {
 	return rotationalInertia;
+}
+
+float Body::GetRadius()
+{
+	return radius;
 }
 
 MATH::Vec3 Body::GetPosition()

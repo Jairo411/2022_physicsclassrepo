@@ -17,7 +17,8 @@ void Timer::UpdateFrameTicks() {
 }
 
 float Timer::GetDeltaTime() const {
-	return static_cast<float>(currentTicks - prevTicks) / 1000.0f;
+	unsigned int deltaTicks = currentTicks - prevTicks;
+	return static_cast<float>(deltaTicks) / 1000.0f;
 }
 
 unsigned int Timer::GetSleepTime(const unsigned int fps_) const {

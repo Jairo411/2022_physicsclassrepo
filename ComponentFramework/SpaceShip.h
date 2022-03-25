@@ -5,7 +5,6 @@
 #include "Physics.h"
 #include "Component.h"
 #include "Matrix.h"
-
 /*
  * The SpaceShip class, is my specified gameObject
  * SDLTexture, Body, Physics are coded into the SpaceShip class 

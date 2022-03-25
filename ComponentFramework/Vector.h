@@ -75,8 +75,6 @@ namespace  MATH {
 			set(v.x,v.y,v.z); 
 		}
 
-		
-
 		///////////////////////////////////////////////////////////
 		/// Operator overloads (see note 1 at the end of this file)
 		///////////////////////////////////////////////////////////
@@ -88,6 +86,7 @@ namespace  MATH {
 		}
 
 		
+
 		/// Now we can use the Vec3 like an array but we'll need two overloads
 		inline const float operator [] ( int index) const {  /// This one is for reading the Vec3 as if where an array
 			return *(&x + index); 
@@ -181,7 +180,6 @@ namespace  MATH {
 			if (comment) printf("%s\n", comment);
 			printf("%1.8f %1.8f %1.8f\n", x,y,z);		  
 		}
-
 		///
 		/// Type conversion operators 
 		///

@@ -4,6 +4,7 @@
 #include "Scene0.h"
 #include "Scene1.h"
 #include "Scene2.h"
+#include "Scene3.h"
 #include "Camera.h"
 
 
@@ -59,7 +60,7 @@ bool SceneManager::Initialize(std::string name_, int width_, int height_)
 	}
 
 	/********************************   Default first scene   ***********************/
-	BuildNewScene(SCENE_NUMBER::SCENE2);
+	BuildNewScene(SCENE_NUMBER::SCENE3);
 	
 	return true;
 }
@@ -141,6 +142,14 @@ void SceneManager::BuildNewScene(SCENE_NUMBER scene) {
 		world = new World();
 		world->OnCreate(window->GetCamera());
 		currentScene = new Scene2();
+		currentScene->SetCamera(window->GetCamera());
+		currentScene->SetWorld(world);
+		status = currentScene->OnCreate();
+		break;
+	case SCENE_NUMBER::SCENE3:
+		world = new World();
+		world->OnCreate(window->GetCamera());
+		currentScene = new Scene3();
 		currentScene->SetCamera(window->GetCamera());
 		currentScene->SetWorld(world);
 		status = currentScene->OnCreate();

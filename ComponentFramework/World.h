@@ -16,7 +16,6 @@ public:
 	World(World&&) = delete;
 	World& operator=(const World&) = delete;
 	World& operator=(World&&) = delete;
-
 	World();
 	~World();
 	///Pass the camera to the world since the camera coordinate system and the world coordinate system 

@@ -25,7 +25,7 @@ public:
 		world = world_;
 	};
 protected:
-	 Camera* camera;
-	 World* world;
+	Camera* camera;
+	World* world;
 };
 #endif

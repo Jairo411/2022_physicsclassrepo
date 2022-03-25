@@ -19,19 +19,24 @@ public:
 
 	void SetMass(float mass_);
 	void SetRotationalInertia(float rotationalInertia_);
+	void SetRadius(float radius_);
 
 	void SetPosition(MATH::Vec3 position_);
 	void SetVelocity(MATH::Vec3 velocity_);
 	void SetAcceleration(MATH::Vec3 acceleration_);
 	void SetForce(MATH::Vec3 force_);
+	
 
 	void SetAngle(float angularPosition_);
 	void SetAngularVelocity(float angularVelocity_);
 	void SetAngularAcceleration(float angularAcceleration_);
-	void SetRotationMatrix(MATH::Matrix3 rotation_);
+	void SetTorque(float torque_);
+	void SetRotationMatrix(MATH::Matrix3 rotation_); // remove this, like now
 
+	float GetTorque();
 	float GetMass();
 	float GetRotationalInertia();
+	float GetRadius();
 
 	MATH::Vec3 GetPosition();
 	MATH::Vec3 GetVelocity();
@@ -44,8 +49,9 @@ public:
 	float GetAngularAcceleration();
 
 private:
-	float mass, rotationalInertia;
-	float angle, angularVel, angularAcc;
+	float mass,rotationalInertia,torque;
+	float angle,angularVel,angularAcc;
+	float radius;
 	MATH::Vec3 position, velocity, acceleration;
 	MATH::Vec3 force;
 	MATH::Matrix3 rotationMatrix;
