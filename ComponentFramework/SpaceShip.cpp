@@ -39,7 +39,7 @@ bool SpaceShip::OnCreate() // place where I can hard code my spaceShip class
     this->AddComponent<Physics>(physics);
 
     this->GetComponent<SDLTexture>()->OnCreate();
-    this->GetComponent<SDLTexture>()->SetRects(source, dst);
+    this->GetComponent<SDLTexture>()->SetRects(&source, &dst);
     this->GetComponent<SDLTexture>()->LoadImage("Assets/SpaceShip.png");
   
     this->GetComponent<Body>()->OnCreate();
@@ -47,9 +47,7 @@ bool SpaceShip::OnCreate() // place where I can hard code my spaceShip class
     this->GetComponent<Body>()->SetRotationalInertia(2.67f * powf(10,10));
     this->GetComponent<Physics>()->OnCreate();
 
-   
-      return true;
-
+    return true;
 }
 
 void SpaceShip::OnDestroy()
@@ -67,7 +65,7 @@ void SpaceShip::Update(const float deltaTime_)
     drawCoords.y = position[13] + leftover.y;
     dst.x = drawCoords.x;
     dst.y = drawCoords.y;
-    this->GetComponent<SDLTexture>()->SetDisplay(dst);
+    this->GetComponent<SDLTexture>()->SetDisplay(&dst);
 }
 
 void SpaceShip::Render() 

@@ -30,6 +30,7 @@ void Camera::SetOrigin(int width_, int height_)
 	originx = drawWidth / 2;
 	originy = drawHeight / 2;
 	cameraOrigin.set(originx,originy, 1);
+	ViewM = MATH::MMath::translate(cameraOrigin);
 }
 
 void Camera::Update(float deltaTime_)

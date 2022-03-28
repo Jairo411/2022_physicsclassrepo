@@ -2,6 +2,7 @@
 #define CAMERA_H
 #include <vector>
 #include "Matrix.h"
+#include "MMath.h"
 #include "Vector.h"
 #include "Actor.h"
 class Component;
@@ -27,15 +28,14 @@ public:
 	MATH::Vec2 GetCameraDraw();
 	///Return the origin of the camera
 	MATH::Vec3 GetOrigin();
+	/// The Only Matrix the camera should have is a view matrix. 
+	MATH::Matrix4 ViewM;
 private:
 	int drawWidth;
 	int drawHeight;
 	///Camera Origin is the position in screen coordinates of where the centre of the centre is 
 	MATH::Vec3 cameraOrigin;
-	///Camera Position matrix is going to the virtual position of the camera
-	MATH::Matrix4 ViewM;
-	MATH::Matrix4 projection;
-	MATH::Matrix4 view;
+	
 };
 #endif // !CAMERA_H
 

@@ -12,17 +12,13 @@ Plane::Plane(float x_, float y_, float z_, float d_)
 
 Plane::Plane()
 {
+    angle = 0.0f;
 }
 
 Plane::~Plane()
 {
 }
 
-void Plane::SetSize(int width_, int height_)
-{
-    transform[0] = width_;
-    transform[1] = height_;
-}
 
 float Plane::Distance(const Body& PhysicsObject)
 {
@@ -37,18 +33,10 @@ float Plane::Distance(const Body& PhysicsObject)
     return distanceFromPlane;
 }
 
-void Plane::SetTheta(float theta_)
+void Plane::SetSize(int width_, int height_)
 {
-    transform[0] = theta_;
-    transform[4] = theta_;
-    transform[1] = theta_;
-    transform[5] = theta_;   
-}
-
-float Plane::GetTheta()
-{
-    //Only need to retrieve theta in one of the matrix columns because theta is the same in all four.
-    return transform[0];
+    transform[0] = width_;
+    transform[5] = height_;
 }
 
 float Plane::GetWidth()
@@ -61,11 +49,17 @@ float Plane::GetHeight()
     return transform[5];
 }
 
+float Plane::GetTheta()
+{
+    return angle;
+}
+
+void Plane::SetPosition(Vec3 position_)
+{
+    position = position_;
+}
+
 Vec3 Plane::GetPosition()
 {
-    Vec3 position = Vec3();
-    position.x = plane.x;
-    position.y = plane.y;
-    position.z = plane.z;
     return position;
 }

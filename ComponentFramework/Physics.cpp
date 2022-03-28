@@ -60,20 +60,20 @@ bool Physics::SphereToSphereCollisionDetected(const Body& sphere0_, const Body& 
     Body s0 = sphere0_;
     Body s1 = sphere1_ ;
     //Get the vector pointing from the first sphere to the second sphere
-    MATH::Vec3 distance = s0.GetPosition() + s1.GetPosition();
+    MATH::Vec3 distance = s0.GetPosition() - s1.GetPosition();
     //Add the spheres radiis.
     radiusSum = s0.GetRadius() + s1.GetRadius();
     //Get the magnitude of the distance vector, to use in comparsion with the radiusSum variable
     distanceM = MATH::VMath::mag(distance);
     if (distanceM<=radiusSum)
     {
-        std::cout << "Collision Detected" << std::endl;
+        std::cout << "Collision Detected with sphere" << std::endl;
         return true;
     }
     return false;
 }
 
-bool Physics::SphereToPlaneCollisionDetected(const Body& sphere_, const Plane& plane_)
+bool Physics::SphereToPlaneCollisionDetected(const Body sphere_, const Plane plane_)
 {
    /* How this collision works is, get two edges of a square/rectangle/plane 
    *  Then check the closest two edges of the square to the circle.
@@ -87,15 +87,15 @@ bool Physics::SphereToPlaneCollisionDetected(const Body& sphere_, const Plane& p
     Vec3 distance = Vec3();
     
     Vec3 edge = Vec3();
-    if (pS.x < pP.x)
+    if (pS.x <= pP.x)
     {
         edge.x = pP.x; //left edge
     }
     else if (pS.x > pP.x+p.GetWidth())
     {
-        edge.y = pP.x + p.GetWidth(); //right edge
+        edge.x = pP.x + p.GetWidth(); //right edge
     }
-    if (pS.y<pP.y)
+    if (pS.y<=pP.y)
     {
         edge.y = pP.y; //top edge/left edge if the object you're working with is a square
     }
@@ -109,6 +109,7 @@ bool Physics::SphereToPlaneCollisionDetected(const Body& sphere_, const Plane& p
     float distanceM = MATH::VMath::mag(distance);
     if (distanceM <= s.GetRadius())
     {
+        std::cout << "Collision Detected with Static Wall" << std::endl;
         return true;
     }
     return false;

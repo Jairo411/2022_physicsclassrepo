@@ -65,11 +65,22 @@ void SDLTexture::OnDestroy()
 
 void SDLTexture::Update(const float deltaTime_)
 {
+	
 }
 
 void SDLTexture::Render()
 {
 	SDL_RenderCopy(Window::getRenderer(),texture,srcRect,dstRect);
+}
+
+void SDLTexture::RenderEx()
+{
+	float centreX = dstRect->w / 2;
+	float centreY = dstRect->h / 2;
+	SDL_Point point = SDL_Point();
+	point.x = centreX;
+	point.y = centreY;
+	SDL_RenderCopyEx(Window::getRenderer(), texture, srcRect, dstRect, *angle, &point, SDL_FLIP_NONE);
 }
 
 bool SDLTexture::LoadImage(const char* filename_)
@@ -88,15 +99,20 @@ bool SDLTexture::LoadImage(const char* filename_)
 	return true;
 }
 
-void SDLTexture::SetRects(SDL_Rect source_, SDL_Rect display_)
+void SDLTexture::SetRects(SDL_Rect* source_, SDL_Rect* display_)
 {
-	*srcRect = source_;
-	*dstRect = display_;
+	srcRect = source_;
+	dstRect = display_;
 }
 
-void SDLTexture::SetDisplay(SDL_Rect display_)
+void SDLTexture::SetAngle(float* angle_)
 {
-	*dstRect = display_;
+	angle = angle_;
+}
+
+void SDLTexture::SetDisplay(SDL_Rect* display_)
+{
+	dstRect = display_;
 }
 
 

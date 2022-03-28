@@ -32,7 +32,7 @@ public:
 
 	///Collision detection methods 
 	static bool SphereToSphereCollisionDetected(const Body	&sphere0_, const Body& sphere1_);
-	static bool SphereToPlaneCollisionDetected(const Body& sphere_, const Plane& plane_);
+	static bool SphereToPlaneCollisionDetected(const Body sphere_, const Plane plane_);
 
 	///Collision response methods: 
 	static void SphereToSphereCollisionResponse(Body& sphere0_, Body& sphere1_);

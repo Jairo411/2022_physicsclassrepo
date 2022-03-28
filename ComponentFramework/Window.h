@@ -8,6 +8,8 @@
 #include "Vector.h"
 #include "Matrix.h"
 #include "Camera.h"
+
+using namespace MATH;
 class Window {
 private:
 	int width, height;
@@ -30,10 +32,13 @@ public:
 	static SDL_Renderer* getRenderer() { return renderer; }
 	void SetCamera(Camera* camera_);
 	Camera* GetCamera();
+	void Project();
 private: /// internal tools OpenGl versions. 
 	void setAttributes(int major_, int minor_);
 	void getInstalledOpenGLInfo(int *major, int *minor);
+	void SetProjection();
 	Camera* camera;
+	MATH::Matrix4 projectionMatrix;
 
 };
 #endif /// !WINDOW_H

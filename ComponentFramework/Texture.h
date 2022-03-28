@@ -23,12 +23,15 @@ public:
 	virtual void OnDestroy() override;
 	virtual void Update(const float deltaTime_) override;
 	virtual void Render();
+	void RenderEx();
 
 	bool LoadImage(const char* filename_);
-	void SetRects(SDL_Rect source_, SDL_Rect display_);
-	void SetDisplay(SDL_Rect display_);	
+	void SetRects(SDL_Rect* source_, SDL_Rect* display_);
+	void SetAngle(float* angle_);
+	void SetDisplay(SDL_Rect* display_);	
 	SDL_Rect* GetDisplayRect();
 private:
+	float* angle;
 	SDL_Rect* srcRect;
 	SDL_Rect* dstRect;
 	SDL_Texture* texture;

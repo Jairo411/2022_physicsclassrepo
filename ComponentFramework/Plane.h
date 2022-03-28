@@ -29,15 +29,17 @@ public:
 	float Distance(const Body& PhysicsObject);
 	///Set the Height and Width of the Plane
 	void SetSize(int width_ , int height_);
-	/// Set the angle and rotate the plane in both x and y axis
-	void SetTheta(float theta_);
-	/// Theta is in radians 
-	float GetTheta();
+	///Set the angle that the plane is at
 	float GetWidth();
 	float GetHeight();
+	float GetTheta();
+	/// Set Position of the plane
+	void SetPosition(Vec3 position_);
 	Vec3 GetPosition();
 private:
 	Vec4 plane;
-	Matrix4 transform;
+	Vec3 position;
+	float angle;
+	MATH::Matrix4 transform;
 };
 #endif //!Plane

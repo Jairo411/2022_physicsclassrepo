@@ -22,9 +22,6 @@ bool Window::OnCreate(std::string name_, int width_, int height_, bool flag_) {
 		this->height = height_;
 		window = SDL_CreateWindow(name_.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
 			width, height, SDL_WINDOW_OPENGL);
-		
-
-
 		if (window == nullptr) {
 			Debug::FatalError("Failed to create a window", __FILE__, __LINE__);
 			return false;
@@ -65,10 +62,6 @@ void Window::OnDestroy() {
 	window = nullptr;
 }
 
-
-
-
-
 void Window::getInstalledOpenGLInfo(int *major, int *minor) {
 	/// You can to get some info regarding versions and manufacturer
 	const GLubyte *version = glGetString(GL_VERSION);
@@ -86,6 +79,18 @@ void Window::getInstalledOpenGLInfo(int *major, int *minor) {
 	Debug::Info("GLSL Version " + std::string((char*)glslVersion), __FILE__, __LINE__);
 	return;
 }
+
+void Window::Project()
+{
+
+}
+
+void Window::SetProjection()
+{
+
+}
+
+
 
 void Window::SetCamera(Camera* camera_)
 {
