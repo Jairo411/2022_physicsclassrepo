@@ -42,14 +42,6 @@ void Physics::ApplyTorque(float torque_,const float deltaTime_, Body* object_)
 
 }
 
-void Physics::ApplyTorque(const float deltaTime_, Body* object_)
-{
-}
-
-void Physics::ApplyForce(const float deltaTime_, Body* object_)
-{
-}
-
 bool Physics::SphereToSphereCollisionDetection(const Body& sphere0_, const Body& sphere1_)
 {
     float distanceM = 0.0f;
@@ -134,34 +126,41 @@ void Physics::SphereToSphereCollisionResponse(Body& sphere0_, Body& sphere1_)
     MATH::Vec3 intial1 = s1->GetVelocity();
 
     // -e(Vi1-Vi2)
+    // Mutiply e with vi1 and vi2 
     MATH::Vec3 cal0 = coefficentOfRestitution * intial0;
     MATH::Vec3 cal1 = coefficentOfRestitution * intial1;
     //v1f=v2f*cal2
+    // Move over v2f equation now comes to 
+    // v1f=v2f e(vi1-vi2)
     MATH::Vec3 cal2 = cal0 - cal1;
 
     //m1 * vi1 + m2 * vi2 = m1 * vf1 + m2 * vf2
     MATH::Vec3 cal3Vi = s0->GetMass() * s0->GetVelocity();
     MATH::Vec3 cal4Vi = s1->GetMass() * s1->GetVelocity();
-    //m1vi1 + m2vi2 = m1 *vf1 + m2 *vf2
+    //m1vi1 + m2vi2 = m1 * vf1 + m2 *vf2
     MATH::Vec3 cal5 = cal3Vi + cal4Vi;
 
-    //X 
-
     //Y
-    //m1vi1+ m2vi2 / cal2 = vf2*vf2
+    // at line 134 you can see that v1f=v2f*cal2 
+    // so line 148 gets expanded to 
+    // m1vi1 + m2vi2 = m1*v2f*cal2+m2*vf2 
+    //m1vi1 + m2vi2 / cal2 = m1vf2*m2vf2
     float cal6 = cal5.y / cal2.y;
+    // so now we have vf2 
+    // we can slove for vf1 
+    // vf1 = (cal 6 * cal 6) * cal 2
     float vFy1 = cal6 * cal6 * cal2.y;
     
     float cal7 = coefficentOfRestitution * intial0.y - intial1.y;
     float cal8 = vFy1 * -1;
-    float vFy2 = cal7 / cal8;
+    
+    //Already have vFy2 
+    //sloved for it at line 148
+    float vFy2 = cal6;
 
-    //Cause of screen coordinates
+    //Cause of screen coordinates and increased the speed by a factor of ten
     vFy2 *= -10;
-    //Z
 
-    
-    
     s0->SetVelocity(MATH::Vec3(0.0f, vFy1, 0.0f));
     s1->SetVelocity(MATH::Vec3(0.0f, vFy2, 0.0f));
 
