@@ -27,10 +27,12 @@ private:
 	class Timer* timer;
 	class Window* window;
 	class World* world;
+	SCENE_NUMBER sceneID;
 	unsigned int fps;
 	bool isRunning;
 	bool fullScreen;
 	bool isOpenGL;
+	
 	void BuildNewScene(SCENE_NUMBER scene_);
 };
 

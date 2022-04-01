@@ -6,7 +6,9 @@ Plane::Plane(float x_, float y_, float z_, float d_)
     plane.x = x_;
     plane.y = y_;
     plane.z = z_;
-    plane.w = d_; // The math here is -N dot (point on plane) 
+    plane.w = d_; 
+
+    // The math here is -N dot (point on plane) 
     // The normal of a 2D plane (changeInTheY , -changeintheX)
 }
 
@@ -56,10 +58,26 @@ float Plane::GetTheta()
 
 void Plane::SetPosition(Vec3 position_)
 {
-    position = position_;
+    transform[12] = position_.x;
+    transform[13] = position_.y;
+    transform[14] = position_.z;
 }
 
 Vec3 Plane::GetPosition()
 {
+    Vec3 position;
+    position.x = transform[12];
+    position.y = transform[13];
+    position.z = transform[14];
     return position;
 }
+
+Vec3 Plane::GetNormal()
+{
+    Vec3 normal = Vec3();
+    normal.x = plane.x;
+    normal.y = plane.y;
+    normal.z = plane.z;
+    return normal;
+}
+

@@ -42,7 +42,7 @@ bool Ball::OnCreate()
     this->GetComponent<SDLTexture>()->LoadImage("Assets/PurpleBall.png");
 
     this->GetComponent<Body>()->SetVelocity(MATH::Vec3(100.0f, 0.0f, 0.0f));
-    this->GetComponent<Body>()->SetRadius(10.0f);
+    this->GetComponent<Body>()->SetRadius(20.0f);
     this->GetComponent<Body>()->SetPosition(MATH::Vec3(dst.x, dst.y, 0.0f));
     return true;
 }
@@ -60,15 +60,17 @@ void Ball::Render()
 void Ball::Update(const float deltaTime_)
 {
 
-    Body* ref = this->GetComponent<Body>();
     this->GetComponent<Body>()->Update(deltaTime_);
     this->GetComponent<SDLTexture>()->Update(deltaTime_);
     
     MATH::Vec2 positionUpdate = MATH::Vec2();
-    positionUpdate.x = ref->GetVelocity().x * deltaTime_;
+    positionUpdate.x = this->GetComponent<Body>()->GetVelocity().x * deltaTime_;
+    positionUpdate.y = this->GetComponent<Body>()->GetVelocity().y * deltaTime_;
 
     modelM[12] += positionUpdate.x;
     modelM[13] += positionUpdate.y;
+
+
     this->GetComponent<Body>()->SetPosition(MATH::Vec3(modelM[12], modelM[13], 0.0f));
     //New way of updating gameObject Positions
     if (dst.w!=modelM[0])

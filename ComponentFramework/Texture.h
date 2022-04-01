@@ -29,6 +29,7 @@ public:
 	void SetRects(SDL_Rect* source_, SDL_Rect* display_);
 	void SetAngle(float* angle_);
 	void SetDisplay(SDL_Rect* display_);	
+	void SetSource(SDL_Rect* source_);
 	SDL_Rect* GetDisplayRect();
 private:
 	float* angle;

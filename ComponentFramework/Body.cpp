@@ -96,62 +96,62 @@ void Body::SetRotationMatrix(MATH::Matrix3 rotation_)
 	rotationMatrix = rotation_;
 }
 
-float Body::GetTorque()
+const float Body::GetTorque()
 {
 	return torque;
 }
 
-float Body::GetMass()
+const float Body::GetMass()
 {
 	return mass;	
 }
 
-float Body::GetRotationalInertia()
+const float Body::GetRotationalInertia()
 {
 	return rotationalInertia;
 }
 
-float Body::GetRadius()
+const float Body::GetRadius()
 {
 	return radius;
 }
 
-MATH::Vec3 Body::GetPosition()
+const MATH::Vec3 Body::GetPosition()
 {
 	return position;
 }
 
-MATH::Vec3 Body::GetVelocity()
+const MATH::Vec3 Body::GetVelocity()
 {
 	return velocity;
 }
 
-MATH::Vec3 Body::GetAcceleration()
+const MATH::Vec3 Body::GetAcceleration()
 {
 	return acceleration;
 }
 
-MATH::Vec3 Body::GetForce()
+const MATH::Vec3 Body::GetForce()
 {
 	return force;	
 }
 
-MATH::Matrix3 Body::GetRotationMatrix()
+const MATH::Matrix3 Body::GetRotationMatrix()
 {
 	return rotationMatrix;
 }
 
-float Body::GetAngularPosition()
+const float Body::GetAngularPosition()
 {
 	return angle;
 }
 
-float Body::GetAngularVelocity()
+const float Body::GetAngularVelocity()
 {
 	return angularVel;
 }
 
-float Body::GetAngularAcceleration()
+const float Body::GetAngularAcceleration()
 {
 	return angularAcc;
 }

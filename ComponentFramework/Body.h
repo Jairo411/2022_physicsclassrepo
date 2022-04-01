@@ -33,20 +33,20 @@ public:
 	void SetTorque(float torque_);
 	void SetRotationMatrix(MATH::Matrix3 rotation_); // remove this, like now
 
-	float GetTorque();
-	float GetMass();
-	float GetRotationalInertia();
-	float GetRadius();
+	const float GetTorque();
+	const float GetMass();
+	const float GetRotationalInertia();
+	const float GetRadius();
 
-	MATH::Vec3 GetPosition();
-	MATH::Vec3 GetVelocity();
-	MATH::Vec3 GetAcceleration();
-	MATH::Vec3 GetForce();
-	MATH::Matrix3 GetRotationMatrix();
+	const MATH::Vec3 GetPosition();
+	const MATH::Vec3 GetVelocity();
+	const MATH::Vec3 GetAcceleration();
+	const MATH::Vec3 GetForce();
+	const MATH::Matrix3 GetRotationMatrix();
 
-	float GetAngularPosition();
-	float GetAngularVelocity();
-	float GetAngularAcceleration();
+	const float GetAngularPosition();
+	const float GetAngularVelocity();
+	const float GetAngularAcceleration();
 
 private:
 	float mass,rotationalInertia,torque;

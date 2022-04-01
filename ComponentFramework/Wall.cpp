@@ -14,7 +14,7 @@ bool Wall::OnCreate()
 
     SDLTexture* sprite = nullptr;
     Body* body = nullptr;
-    plane = Plane(-1.0f, 1.0f, 0.0f, 0.0f);
+    plane = Plane(-1.0f,1.0f,0.0f,0.0f);
     
 
     this->AddComponent<SDLTexture>(sprite);
@@ -50,9 +50,10 @@ bool Wall::OnCreate()
     dst.w = source.w;
     dst.h = source.h;
    
-    this->GetComponent<Body>()->SetPosition(MATH::Vec3(dst.x,dst.y,0.0f));
-   
 
+    plane.SetSize(modelM[0],modelM[5]);
+    this->GetComponent<Body>()->SetPosition(MATH::Vec3(dst.x,dst.y,0.0f));
+ 
 
     /* Okay so over here, when we create our texture, lets imagine that our we're working in local coordinates. 
     *  We're creating our texture or gameObject whatever it is.
@@ -112,7 +113,7 @@ void Wall::Update(const float deltaTime_)
     //}
 
     this->GetComponent<Body>()->SetPosition(MATH::Vec3(modelM[12], modelM[13], 0.0f));
-    plane.SetPosition(this->GetComponent<Body>()->GetPosition());
+     plane.SetPosition(this->GetComponent<Body>()->GetPosition());
     if (dst.w!=modelM[0])
     {
         dst.w = modelM[0];

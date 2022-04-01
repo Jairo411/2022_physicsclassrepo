@@ -70,6 +70,14 @@ void SDLTexture::Update(const float deltaTime_)
 
 void SDLTexture::Render()
 {
+	if (srcRect->w != dstRect->w)
+	{
+		dstRect->w = srcRect->w;
+	}
+	if (srcRect->h!=dstRect->h)
+	{
+		dstRect->h = srcRect->h;
+	}
 	SDL_RenderCopy(Window::getRenderer(),texture,srcRect,dstRect);
 }
 
@@ -113,6 +121,14 @@ void SDLTexture::SetAngle(float* angle_)
 void SDLTexture::SetDisplay(SDL_Rect* display_)
 {
 	dstRect = display_;
+}
+
+void SDLTexture::SetSource(SDL_Rect* source_)
+{
+	srcRect->x += source_->x;
+	srcRect->y += source_->y;
+	srcRect->h += source_->h;
+	srcRect->w += source_->w;
 }
 
 

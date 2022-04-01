@@ -14,18 +14,14 @@ class Body;
 class Plane
 {
 public:
-	/* Represent palne using x,y,z and d as the 4th component 
-	* where x,yz, are the components of the normal vector 
+	/* Represent plane using x,y,z and d as the 4th component 
+	* where x,y,z are the components of the normal vector 
 	* d is the distance to a parallel plane going through the origin 
 	* d = -N dot (point on plane) 
 	*/
 	Plane(float x_, float y_, float z_, float d_);
 	Plane();
 	~Plane();
-	/*
-	* Find the ditance between a sphere shaped PhysicsObject and the plane 
-	* distance = (plane) dot ( PhysicsObject 4D position) - physicsObject.radius
-	*/
 	float Distance(const Body& PhysicsObject);
 	///Set the Height and Width of the Plane
 	void SetSize(int width_ , int height_);
@@ -36,10 +32,12 @@ public:
 	/// Set Position of the plane
 	void SetPosition(Vec3 position_);
 	Vec3 GetPosition();
-private:
+	/// Vec3 the normal point that is perpendicular to the plane
+	Vec3 GetNormal();
+ private:
 	Vec4 plane;
-	Vec3 position;
+	Matrix4 transform;
 	float angle;
-	MATH::Matrix4 transform;
+	
 };
 #endif //!Plane

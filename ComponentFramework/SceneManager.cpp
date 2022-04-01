@@ -5,6 +5,8 @@
 #include "Scene1.h"
 #include "Scene2.h"
 #include "Scene3.h"
+#include "Scene4.h"
+#include "Scene5.h"
 #include "Camera.h"
 
 
@@ -109,6 +111,22 @@ void SceneManager::HandleEvents() {
 				[[fallthrough]]; /// C17 Prevents switch/case fallthrough warnings
 			default:
 				break;
+			case SDL_SCANCODE_SPACE:
+				switch (sceneID)
+				{
+				case SceneManager::SCENE_NUMBER::SCENE3:
+					BuildNewScene(SCENE_NUMBER::SCENE4);
+					break;
+				case SceneManager::SCENE_NUMBER::SCENE4:
+					BuildNewScene(SCENE_NUMBER::SCENE5);
+					break;
+				case SceneManager::SCENE_NUMBER::SCENE5:
+					BuildNewScene(SCENE_NUMBER::SCENE3);
+					break;
+				default:
+					break;
+				}
+				break;
 			}
 		}
 		if (currentScene == nullptr) {
@@ -147,9 +165,29 @@ void SceneManager::BuildNewScene(SCENE_NUMBER scene) {
 		status = currentScene->OnCreate();
 		break;
 	case SCENE_NUMBER::SCENE3:
+		sceneID = SCENE_NUMBER::SCENE3;
 		world = new World();
 		world->OnCreate(window->GetCamera());
 		currentScene = new Scene3();
+		currentScene->SetCamera(window->GetCamera());
+		currentScene->SetWorld(world);
+		status = currentScene->OnCreate();
+		break;
+	case SCENE_NUMBER::SCENE4:
+		sceneID = SCENE_NUMBER::SCENE4;
+		world = new World();
+		world->OnCreate(window->GetCamera());
+		currentScene = new Scene4();
+		currentScene->SetCamera(window->GetCamera());
+		currentScene->SetWorld(world);
+		status = currentScene->OnCreate();
+		break;
+
+	case SCENE_NUMBER::SCENE5:
+		sceneID = SCENE_NUMBER::SCENE5;
+		world = new World();
+		world->OnCreate(window->GetCamera());
+		currentScene = new Scene5();
 		currentScene->SetCamera(window->GetCamera());
 		currentScene->SetWorld(world);
 		status = currentScene->OnCreate();
