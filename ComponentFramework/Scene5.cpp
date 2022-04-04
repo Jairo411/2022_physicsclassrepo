@@ -22,6 +22,10 @@ bool Scene5::OnCreate()
 	world->AddGameObjects(ball0);
 	world->AddGameObjects(ball1);
 
+	sphere0 = ball0->GetComponent<Body>();
+	sphere1 = ball1->GetComponent<Body>();
+	physic = ball0->GetComponent<Physics>();
+
 	///MATH for the first ball
 	MATH::Matrix4 Mclip = camera->ViewM * ball0->modelM;
 	MATH::Vec3 vClip = MATH::Vec3();
@@ -63,6 +67,7 @@ bool Scene5::OnCreate()
 	
 	ball0->modelM[13] += -200.0f;
 
+	
 
 	return true;
 }
@@ -73,9 +78,6 @@ void Scene5::OnDestroy()
 
 void Scene5::Update(const float deltaTime_)
 {
-	Body* sphere0 = ball0->GetComponent<Body>();
-	Body* sphere1 = ball1->GetComponent<Body>();
-	Physics* physic = ball0->GetComponent<Physics>();
 	world->Update(deltaTime_);
 	if (physic->SphereToSphereCollisionDetection(*sphere0,*sphere1)&& lock ==false)
 	{

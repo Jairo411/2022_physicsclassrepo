@@ -17,6 +17,9 @@ public:
 private:
 	Ball* ball0;
 	Ball* ball1;
+	Body* sphere0;
+	Body* sphere1;
+	Physics* physic;
 	bool lock;
 };
 

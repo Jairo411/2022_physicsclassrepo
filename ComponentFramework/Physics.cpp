@@ -72,7 +72,7 @@ bool Physics::SphereToPlaneCollisionDetection(const Body sphere_, const Plane pl
     * - then get the vector difference between the point on the plane and the position of the sphere
     *  -get the magnitude of that vector
     *  -compare the length of the vector with the radius of the circle 
-    *  - if the length of the vector is smaller than the radius, their has been a collision 
+    *  - if the length of the vector is smaller than the radius, there has been a collision 
     */
     Body s = sphere_;
     Plane p = plane_;
@@ -103,7 +103,6 @@ bool Physics::SphereToPlaneCollisionDetection(const Body sphere_, const Plane pl
     ///get the length of the vector
     float distanceM = MATH::VMath::mag(distancePointOne);
 
-//    std::cout << "Distance:" << distanceM << std::endl;
     if (distanceM <= s.GetRadius())
     {
         std::cout << "Collision Detected with Static Wall" << std::endl;
@@ -115,14 +114,15 @@ bool Physics::SphereToPlaneCollisionDetection(const Body sphere_, const Plane pl
 void Physics::SphereToSphereCollisionResponse(Body& sphere0_, Body& sphere1_)
 {
     /*
-    *Assuming that the mass is 1.0 unit
+    *Assuming that the mass is 1.0 unit. the calculations are done in cartensian coordinates 
+    * Then converted to screen coordinates. 
     */
     Body* s0 = &sphere0_;
     Body* s1 = &sphere1_;
     float coefficentOfRestitution = -1.0f;
 
-    //Getters 
-    MATH::Vec3 intial0 = s0->GetVelocity(); //have to do this because of screencoordinates
+    //set my intial values, with getters. flip the sign of the intial velocity vector to get cartensian coorindates
+    MATH::Vec3 intial0 = s0->GetVelocity()*-1; 
     MATH::Vec3 intial1 = s1->GetVelocity();
 
     // -e(Vi1-Vi2)
@@ -135,44 +135,62 @@ void Physics::SphereToSphereCollisionResponse(Body& sphere0_, Body& sphere1_)
     MATH::Vec3 cal2 = cal0 - cal1;
 
     //m1 * vi1 + m2 * vi2 = m1 * vf1 + m2 * vf2
-    MATH::Vec3 cal3Vi = s0->GetMass() * s0->GetVelocity();
-    MATH::Vec3 cal4Vi = s1->GetMass() * s1->GetVelocity();
+    MATH::Vec3 cal3Vi = s0->GetMass() * intial0;
+    MATH::Vec3 cal4Vi = s1->GetMass() * intial1;
     //m1vi1 + m2vi2 = m1 * vf1 + m2 *vf2
     MATH::Vec3 cal5 = cal3Vi + cal4Vi;
 
-    //Y
+    ///All In the Y though.
     // at line 134 you can see that v1f=v2f*cal2 
     // so line 148 gets expanded to 
     // m1vi1 + m2vi2 = m1*v2f*cal2+m2*vf2 
     //m1vi1 + m2vi2 / cal2 = m1vf2*m2vf2
-    float cal6 = cal5.y / cal2.y;
+    float cal6 = cal5.y/  cal2.y;
     // so now we have vf2 
     // we can slove for vf1 
     // vf1 = (cal 6 * cal 6) * cal 2
     float vFy1 = cal6 * cal6 * cal2.y;
     
-    float cal7 = coefficentOfRestitution * intial0.y - intial1.y;
-    float cal8 = vFy1 * -1;
-    
     //Already have vFy2 
     //sloved for it at line 148
     float vFy2 = cal6;
 
-    //Cause of screen coordinates and increased the speed by a factor of ten
-    vFy2 *= -10;
 
+    float sY1 = vFy1 * -1;
+    float sY2 = vFy2 * -1;
+
+    //Cartesan coordinates system info 
+    //If the value of a zero is negative it is actually just zero
+    std::cout << "intial vector info in cartensian coorindates" << std::endl;
+    std::cout << "1X: " << s0->GetVelocity().x << " 1Y: " << s0->GetVelocity().y*-1  << std::endl;
+    std::cout << "2X: " << s1->GetVelocity().x << " 2Y: " << s1->GetVelocity().y  << std::endl;
+
+    std::cout << "results of the collision in cartensian coorindates" << std::endl;
+    std::cout << "Y1:" << vFy1  << std::endl;
+    std::cout << "Y2:" << vFy2  << std::endl;
+
+    std::cout << "results of the collision in screen coordinates" << std::endl;
+    std::cout << "Y1:" << sY1 << std::endl;
+    std::cout << "Y2:" << sY2 << std::endl;
+    std::cout << std::endl;
+
+    //Cause of screen coordinates positive in the Y, will actually bring the sprite down, and increased the speed by a factor of ten.
+    vFy2 *= -90;
+    //Just multiplying the value by a negative factor of 90, and 2
+    vFy1 *= -2;
+   
     s0->SetVelocity(MATH::Vec3(0.0f, vFy1, 0.0f));
     s1->SetVelocity(MATH::Vec3(0.0f, vFy2, 0.0f));
 
-    std::cout << "1X: " << s0->GetVelocity().x << "1Y: " << s0->GetVelocity().y << "1Z: " << s0->GetVelocity().z << std::endl;
-    std::cout << "2X: " << s1->GetVelocity().x << "2Y: " << s1->GetVelocity().y << "2Z: " << s1->GetVelocity().z << std::endl;
+
     
 }
 
 void Physics::SphereToStaticSphereCollisionResponse(Body& sphere0_, const Body& staticSphere_)
 {
     /*
-    * Sadly hardcoding the dynamic respone data here to get the proper simulation
+    * sadly hardcoding the position variables, 
+    * because I haven't set up my coordinates system properly.
     */
 
     MATH::Vec3 dynamicSpherePos = MATH::Vec3(3.0f, 4.0f, 0.0f);
@@ -231,7 +249,7 @@ void Physics::SpherePlaneCollisionResponse(Body& sphere0_, const Plane& plane_)
    /// 1.Simple Collisions 
    /// angle of incidence = angle of reflection 
    /// 2. Collision with Non-Axis Aligned Planes 
-   /// 
+   
     Plane p = plane_;
     Body* s = &sphere0_;
     MATH::Vec3 rV = MATH::Vec3();
@@ -241,25 +259,28 @@ void Physics::SpherePlaneCollisionResponse(Body& sphere0_, const Plane& plane_)
     MATH::Vec3 vF = MATH::Vec3();
     float dotProductProjectionMag = 0.0f;
 
-             
+
+    //Set the reverse intial velocity
     rV = s->GetVelocity() * -1;
 
+    //The Plane has a normal set, just get the data from the plane object. 
    normalV = p.GetNormal();
+   //normalize the normal vector
    unitNormal= MATH::VMath::normalize(normalV);
    
-
    dotProductProjectionMag = MATH::VMath::dot(rV,unitNormal);
+   //Get the projection vector by mutiplying the direction and the length of projection together.
    projection = unitNormal * dotProductProjectionMag;
 
    vF = s->GetVelocity() + 2 * projection;
-    
-   /* Because in screen coordinates I have to hard code this part 
-   * Before this the final velocity will be a postive number in the Y. 
-   * But positive numbers in the Y in SDL are going down
-   */
-   vF.y *= -1;
+   
    std::cout << "Velocity Vector" << std::endl;
    vF.print();
+   /* Because in screen coordinates I have to hard code this part
+* Before this the final velocity will be a postive number in the Y.
+* But positive numbers in the Y in SDL mean to travel down the screen.
+*/
+   vF.y *= -1;
    s->SetVelocity(vF);
 }
 
