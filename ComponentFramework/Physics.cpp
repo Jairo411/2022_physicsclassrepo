@@ -155,7 +155,6 @@ void Physics::SphereToSphereCollisionResponse(Body& sphere0_, Body& sphere1_)
     //sloved for it at line 148
     float vFy2 = cal6;
 
-
     float sY1 = vFy1 * -1;
     float sY2 = vFy2 * -1;
 
@@ -182,8 +181,6 @@ void Physics::SphereToSphereCollisionResponse(Body& sphere0_, Body& sphere1_)
     s0->SetVelocity(MATH::Vec3(0.0f, vFy1, 0.0f));
     s1->SetVelocity(MATH::Vec3(0.0f, vFy2, 0.0f));
 
-
-    
 }
 
 void Physics::SphereToStaticSphereCollisionResponse(Body& sphere0_, const Body& staticSphere_)
@@ -221,7 +218,9 @@ void Physics::SphereToStaticSphereCollisionResponse(Body& sphere0_, const Body& 
 
     vF = dynamicS->GetVelocity() + 2 * projection;
 
+    
     vF *= -1;
+
     std::cout << "Velocity Vector" << std::endl;
     vF.print();
     dynamicS->SetVelocity(vF);
